@@ -1,5 +1,5 @@
 const express = require('express');
-const { login, register, logout, getMe, refreshToken } = require('../controller/auth-controller');
+const { login, register, logout, getMe, refreshToken, verifyOTP, generatOtp } = require('../controller/auth-controller');
 const router = express.Router();
 
 // @route POST api/v1/auth/login
@@ -26,5 +26,15 @@ router.get('/me', getMe);
 // @desc Refresh token
 // @access Public
 router.post('/refresh', refreshToken);
+
+// @route POST api/v1/auth/verify-otp
+// @desc Verify OTP
+// @access Public
+router.post('/verify-otp', verifyOTP);
+
+// @route POST api/v1/auth/generate-otp
+// @desc Generate New OTP
+// @access Public
+router.post('/generate-otp', generatOtp);
 
 module.exports = router;
